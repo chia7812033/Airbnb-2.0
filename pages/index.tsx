@@ -1,3 +1,4 @@
+import Banner from "../components/Banner";
 import Head from 'next/head'
 import Header from '../components/Header'
 import type { NextPage } from 'next'
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
-      {/* Banner */}
+      <Banner />
     </div>
   )
 }
