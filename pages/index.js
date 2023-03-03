@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 import Banner from "../components/Banner";
+import Footer from "../components/Footer"
 import Head from "next/head";
 import Header from "../components/Header";
+import LargeCard from "../components/LargeCard"
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
 import { nanoid } from "nanoid";
@@ -56,13 +58,22 @@ const Home = () => {
 
         <section>
           <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
-          <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 ml-3">
+          <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3'>
             {cardData?.map((item) => (
               <MediumCard key={nanoid()} img={item.img} title={item.title} />
             ))}
           </div>
         </section>
+
+        <LargeCard
+          img='https://links.papareact.com/4cj'
+          title='The greatest Outdoors'
+          description='Wishlists curated by Airbnb.'
+          buttonText='Get Inspired'
+        />
       </main>
+
+      <Footer />
     </div>
   );
 };
