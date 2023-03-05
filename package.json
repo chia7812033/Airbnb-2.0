@@ -8,12 +8,14 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "date-fns": "^2.29.3",
+    "mapbox-gl": "^2.13.0",
     "nanoid": "^4.0.1",
     "next": "latest",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-date-range": "^1.4.0",
     "react-dom": "18.2.0",
+    "react-map-gl": "^7.0.21",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {

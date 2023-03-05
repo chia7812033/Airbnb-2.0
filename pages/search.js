@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
+import MapboxMap from "../components/MapboxMap";
 import { format } from "date-fns";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
@@ -60,7 +61,7 @@ function Search() {
             <p className='button'>More filters</p>
           </div>
 
-          <div className="flex flex-col">
+          <div className='flex flex-col'>
             {searchResult.map(
               ({ img, location, title, description, star, price, total }) => (
                 <InfoCard
@@ -76,6 +77,10 @@ function Search() {
               )
             )}
           </div>
+        </section>
+
+        <section className='hidden xl:inline-flex xl:min-w-[600px] xl:h-screen xl:sticky xl:top-20'>
+          <MapboxMap />
         </section>
       </main>
 

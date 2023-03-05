@@ -4,4 +4,7 @@ module.exports = {
   images: {
     domains: ["links.papareact.com"],
   },
+  env: {
+    MAPBOX_TOKEN: process.env.MAPBOX_TOKEN,
+  },
 };
