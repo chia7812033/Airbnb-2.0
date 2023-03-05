@@ -8,16 +8,18 @@ import {
   UserCircleIcon,
   UsersIcon,
 } from "@heroicons/react/solid";
-import { use, useState } from "react";
 
 import { DateRangePicker } from "react-date-range";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-function Header() {
+function Header({placeholder}) {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noOfGuests, setnoOfGuests] = useState(1);
+  const router = useRouter();
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
@@ -31,7 +33,19 @@ function Header() {
   };
 
   const resetInput = () => {
-    setSearchInput("")
+    setSearchInput("");
+  };
+
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests,
+      },
+    });
   };
 
   return (
@@ -40,7 +54,10 @@ function Header() {
     shadow-md p-5 md:px-10'
     >
       {/* left */}
-      <div className='relative flex items-center h-10 cursor-pointer my-auto'>
+      <div
+        onClick={() => router.push("/")}
+        className='relative flex items-center h-10 cursor-pointer my-auto'
+      >
         <Image
           src='https://links.papareact.com/qd3'
           alt='airbnb-logo'
@@ -65,7 +82,7 @@ function Header() {
           className='flex-grow pl-2 pr-3 bg-transparent outline-none text-small
            text-gray-600 placeholder-gray-400'
           type='text'
-          placeholder='Start your search'
+          placeholder={placeholder ? placeholder : 'Start your search'}
         />
         <SearchIcon
           className='hidden md:inline-flex h-8 bg-red-400
@@ -109,8 +126,12 @@ function Header() {
             />
           </div>
           <div className='flex'>
-            <button onClick={resetInput} className='flex-grow text-gray-500'>Cancel</button>
-            <button className='flex-grow text-red-400'>Search</button>
+            <button onClick={resetInput} className='flex-grow text-gray-500'>
+              Cancel
+            </button>
+            <button onClick={search} className='flex-grow text-red-400'>
+              Search
+            </button>
           </div>
         </div>
       )}
