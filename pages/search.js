@@ -15,7 +15,13 @@ async function getData() {
 
 function Search() {
   const router = useRouter();
-  const { location, startDate, endDate, noOfGuests } = router.query;
+  let { location, startDate, endDate, noOfGuests } = router.query;
+  if (!startDate) {
+    startDate = new Date()
+  }
+  if (!endDate) {
+    endDate = new Date()
+  }
 
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
