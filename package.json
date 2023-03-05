@@ -8,6 +8,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "date-fns": "^2.29.3",
+    "geolib": "^3.3.3",
     "mapbox-gl": "^2.13.0",
     "nanoid": "^4.0.1",
     "next": "latest",

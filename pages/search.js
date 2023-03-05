@@ -17,19 +17,16 @@ function Search() {
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
 
-  if (startDate && endDate) {
-    const formattedStartDate = format(new Date(startDate), "dd MMMM yy")
-    const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
-  }
-  let range = ""
-  try {
-    range = `${formattedStartDate} - ${formattedEndDate}`;
-  } catch (error) {
-    range = "";
-  }
+  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
+  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
 
+  const range = `${formattedStartDate} - ${formattedEndDate}`;
 
   const [searchResult, setSearchResult] = useState([]);
+  const locations = searchResult.map((item) => ({
+    latitude: item.lat,
+    longitude: item.long,
+  }));
 
   useEffect(() => {
     async function loadData() {
@@ -80,7 +77,7 @@ function Search() {
         </section>
 
         <section className='hidden xl:inline-flex xl:min-w-[600px] xl:h-screen xl:sticky xl:top-20'>
-          <MapboxMap />
+          <MapboxMap searchResult={searchResult} />
         </section>
       </main>
 
